@@ -2,9 +2,9 @@ import itertools
 
 t = 31
 
-cl = [1,1,3,1]
+cl = [1,1,4,5]
 
-operations = ["+", "-", "*", "/"]
+operations = ["+", "-", "*", "/", "<<", ">>", "^"]
 
 def r(a,b,o):
     a = float(a)
@@ -20,6 +20,17 @@ def r(a,b,o):
         if b == 0:
             return -1000
         return a/b
+    elif o == "<<":
+        n = max(0, int(b))
+        return int(a) << n
+    elif o == ">>":
+        n = max(0, int(b))
+        return int(a) >> n
+    elif o == "^":
+        try:
+            return pow(a,b)
+        except:
+            return 0
 
 for c in itertools.permutations(cl, 4):
     for o1 in operations:
